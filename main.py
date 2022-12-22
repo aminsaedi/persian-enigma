@@ -5,6 +5,8 @@ rotors = decode()
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
+total_rotate_count = 0
+
 
 def enigma_for_char(char):
     r0 = alphabet.find(char)
@@ -21,10 +23,27 @@ def enigma_for_char(char):
     r1_back_index = rotors[0].find(r2_back)
     r1_back = alphabet[r1_back_index]
 
+    global total_rotate_count
+    total_rotate_count += 1
+    rotors[0] = rotator(rotors[0])
+    if (total_rotate_count % 26 == 0):
+        rotors[1] = rotator(rotors[1])
+    if (total_rotate_count % 52 == 0):
+        rotors[2] = rotator(rotors[2])
+
     return r1_back
 
 
-plain = "a"
+def rotator(input):
+    output = ""
+    for index in range(len(input) - 1):
+        output += input[index + 1]
+    output += input[0]
+    return output
+
+
+
+plain = "hihihihi"
 cipher = ""
 
 for char in plain:
