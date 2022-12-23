@@ -2,7 +2,7 @@
 
 ## TODO
 
-- [ ] add decoder
+- [x] add decoder
 - [ ] use tui
 - [ ] translate to persian
 
