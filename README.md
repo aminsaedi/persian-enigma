@@ -3,6 +3,6 @@
 ## TODO
 
 - [x] add decoder
-- [ ] use tui
+- [x] use tui
 - [ ] translate to persian
 
