@@ -12,6 +12,7 @@ encoder_text_input = ptg.InputField(prompt="Enter Plain Text: ")
 encoder_result = ptg.Label()
 decoder_result = ptg.Label()
 decoder_text_input = ptg.InputField(prompt="Enter Encoded Text: ")
+total_count = ptg.Label("-0-")
 
 
 def handle_encode(e):
@@ -75,7 +76,7 @@ with ptg.WindowManager() as manager:
     manager.add(encoder, assign="body_top")
     manager.add(decoder, assign="body_bottom")
 
-    footer = ptg.Window(ptg.Button("Quit"), box="EMPTY")
+    footer = ptg.Window(total_count, box="EMPTY")
 
     manager.add(footer, assign="footer")
 
