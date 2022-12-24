@@ -10,11 +10,3 @@ def decode():
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 res = decode()
-print(alphabet)
-print(res[0])
-print("------")
-print(alphabet)
-print(res[1])
-print("------")
-print(alphabet)
-print(res[2])

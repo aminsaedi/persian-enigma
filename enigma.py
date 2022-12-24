@@ -55,25 +55,20 @@ def decode_char(char):
     rotate_rotors()
     return r1_rev
 
-plain = "hihihihimynameisaminsaediimlivinginmontrealcanadaimwebdevelopernowimcookingfoodformyselfandimaloneallthetimes"
-cipher = ""
 
-# for char in plain:
-#    cipher += enigma_for_char(char)
-
-print("Plain: " + plain)
-print("Cipher: " + cipher)
-
-ciphered = "nhgazcbvwemsyfjyludvlfzyqoxwcntjrptsgfnxahfdwjzvtcgcikzhomdpggvveehqjkgtrjpofqaujthvyjgkntatpxcsrrcagolbnrnyn"
+def encode(i):
+    global total_rotate_count
+    total_rotate_count = 0
+    cipher = ""
+    for char in i:
+        cipher += enigma_for_char(char)
+    return cipher
 
 
-total_rotate_count = 0
-decoded = ""
-for char in ciphered:
-    decoded += decode_char(char)
-
-print("Decoded: ", decoded)
-
-
-
-
+def decode(i):
+    global total_rotate_count
+    total_rotate_count = 0
+    decoded = ""
+    for char in i:
+        decoded += decode_char(char)
+    return decoded
