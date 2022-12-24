@@ -3,7 +3,10 @@ import time
 import pytermgui as ptg
 from pytermgui.enums import SizePolicy as SP
 
-from enigma import encode, decode
+from enigma import Enigma
+
+decoder = Enigma()
+encoder = Enigma()
 
 default_encoder = "[2 @34;123;255]Cipher text is: [inverse]"
 default_decoder = "[2 @34;123;255]Decoded text is: [inverse]"
@@ -17,7 +20,7 @@ total_count = ptg.Label("-0-")
 
 def handle_encode(e):
     val = encoder_text_input.value
-    val = encode(val)
+    val = encoder.run(val)
     if len(val) == 0:
         encoder_result.value = ""
         return
@@ -26,7 +29,7 @@ def handle_encode(e):
 
 def handle_decode(e):
     val = decoder_text_input.value
-    val = decode(val)
+    val = decoder.run(val)
     if len(val) == 0:
         decoder_result.value = ""
         return
@@ -55,7 +58,7 @@ with ptg.WindowManager() as manager:
 
     manager.add(ptg.Window("[bold]Enigma Python App", box="EMPTY"))
 
-    encoder = ptg.Window(
+    encoder_win = ptg.Window(
                    encoder_text_input,
                    "\n\n",
                    encoder_button,
@@ -64,7 +67,7 @@ with ptg.WindowManager() as manager:
                    title="Encoder",
             )
 
-    decoder = ptg.Window(
+    decoder_win = ptg.Window(
                     decoder_text_input,
                     "\n\n",
                     decoder_button,
@@ -73,8 +76,8 @@ with ptg.WindowManager() as manager:
                     title="Decoder"
             )
 
-    manager.add(encoder, assign="body_top")
-    manager.add(decoder, assign="body_bottom")
+    manager.add(encoder_win, assign="body_top")
+    manager.add(decoder_win, assign="body_bottom")
 
     footer = ptg.Window(total_count, box="EMPTY")
 
